@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-min.css">
+        <title>Blank App Designer Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's screen.
+  * Note that the meta viewport approach is being phased out in favor of the @viewport CSS rule.
+  * For a quick overview of both, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see what happens, try the app on a real device with and without a "meta viewport" tag.
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi">-->
+         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> 
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; zoom: 100% ; }                           @viewport { width: 100vw ; zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; }                                    @viewport { user-zoom: fixed ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <!--        <link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" class="main-less">-->
+
+        <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <script src="intelxdk.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container api calls -->
+        <script src="cordova.js"></script>
+        <!-- phantom library, needed for Cordova api calls -->
+        <script src="xhr.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container CORS -->
+        
+        <script src="lib/fastclick.js"></script>
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+
+        <!-- normalizes device and document ready events, see file for details -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="jqm/jquery.mobile-min.js" data-ver="0"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+
+        <script type="application/javascript" src="js/jfchart/jchartfx.system.js"></script>
+        <script type="application/javascript" src="js/jfchart/jchartfx.coreVector.js"></script>
+
+        <script type="application/javascript" src="js/jfchart/jchartfx.coreVector3d.js"></script>
+        <script type="application/javascript" src="js/jfchart/jchartfx.pyramid.js"></script>
+        <script type="application/javascript" src="js/jfchart/jchartfx.ui.js"></script>
+
+    </head>
+
+    <body>
+        <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- home page -->
+        <div class="upage ui-page-theme-a" id="mainpage" data-role="page">
+            <div class="upage-outer">
+                <div data-role="header" class="container-group inner-element uib_w_5" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed" data-theme="b">
+                    <h1>Manage Your Expenses</h1>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+                <div class="upage-content vertical-col" id="page_70_65">
+                    <div class="upage-outer">
+
+                    </div>
+
+                    <div class="widget uib_w_4 font-size-small center text-shadow-none margin-top-15" data-shadow="false" data-uib="media/text" data-ver="0">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>Create &amp; keep track of your personal expenses</p>
+                        </div>
+                    </div>
+                    <a class="widget uib_w_7 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="bullets" data-theme="b" id="viewExpenses">Individual Expenses</a>
+                    <div class="widget uib_w_79 font-small-text-eg" data-uib="media/text" data-ver="0">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>eg: Monthly expenses, Expenses during a trip, etc.</p>
+                        </div>
+                    </div>
+                    <div class="widget uib_w_80 font-size-small center" data-uib="media/text" data-ver="0">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>Want to track expenses in a group? Use the button below.</p>
+                        </div>
+                    </div>
+
+                    <a class="widget uib_w_62" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="bullets" id="viewGroupExpensesButton" data-theme="b">Group Expenses</a>
+                    <div class="widget uib_w_81 d-margins font-small-text-eg" data-uib="media/text" data-ver="0">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>eg: Expenses during a trip with freinds, Live with a friend and share daily expenses, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- home page -->
+
+        <!-- create individual expense page -->
+        <div class="upage" id="createIndividualExpensePage" data-role="page">
+            <div class="upage-outer">
+                <div data-role="header" class="container-group inner-element uib_w_8" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Create New Expense List</h1>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left">
+                        <a class="widget uib_w_30 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" data-iconpos="notext" id="backToHomeFromList"></a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+                <div class="upage-content content-area vertical-col" id="page_31_13">
+
+                    <div class="table-thing with-label widget uib_w_9 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-inline" for="expenseNameInput">Name</label>
+                        <input class="wide-control" placeholder="Enter List Name" type="text" id="expenseNameInput">
+                    </div>
+                    <a class="widget uib_w_10 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-theme="b" id="createIndividualExpenseButton">Create</a>
+                    <!-- warning popup -->
+                    <a id="linkDialogCreateNewExpenseList" href="#alertBoxCreateNewExpenseList" data-rel="popup" data-position-to="window" data-transition="pop" style="display:none;"></a>
+                    <div data-role="popup" id="alertBoxCreateNewExpenseList" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Check!!</h3>
+                        <p></p>
+                        <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- create individual expense page -->
+
+        <!-- expense list page -->
+        <div class="upage" id="expenseList" data-role="page">
+            <div class="upage-outer">
+
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_11" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Expenses</h1>
+                    <div class="widget-container content-area horiz-area wrapping-col left">
+                        <a class="widget uib_w_16 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="home" data-mini="true" data-iconpos="notext" id="backTohome"></a>
+                    </div>
+
+                </div>
+
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col" id="page_18_28">
+                    <div class="widget uib_w_12 ui-content no_wrap outset-margin d-margins" data-uib="jquery_mobile/listview" data-ver="0">
+                        <!-- list view -->
+
+                        <ul data-role="listview" id="expenseListDiv" data-split-icon="delete" data-split-theme="d" data-filter="true" data-filter-placeholder="Filter Expense List ...">
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#"><h2>Broken Bells</h2><span class="ui-li-count">45</span></a>
+                                <a href="#delete" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#"><h2>Broken Bells</h2><span class="ui-li-count">45</span></a>
+                                <a href="#delete" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                        </ul>
+
+                        <!-- delete popup -->
+                        <div data-role="popup" id="delete" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                            <h3>Delete List?</h3>
+                            <p>It will delete the expense list permanently.</p>
+                            <a id="deleteExpenseList" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Delete</a>
+                            <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- footer -->
+                <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_14" data-uib="jquery_mobile/footer" data-ver="0">
+                    <div class="widget-container wrapping-col single-centered"><a class="widget uib_w_15 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-theme="b" id="createExpense">Create New Expense</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- add new expense page -->
+        <div class="upage" id="addExpenses" data-role="page">
+            <div class="upage-outer">
+                <div data-role="header" class="container-group inner-element uib_w_18" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Add New Expense</h1>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_21 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" data-iconpos="notext" id="backToIndividualExpenseList">Button</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+                <div class="upage-content content-area vertical-col left" id="page_65_30">
+                    <div class="table-thing with-label widget uib_w_19 d-margins" data-uib="jquery_mobile/select" data-ver="0">
+                        <label class="narrow-control label-inline">Item</label>
+                        <div data-role="fieldgroup" class+="" "wide-control"="">
+                            <select id="itemDropDown">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-thing with-label widget uib_w_17 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-inline" for="enteredAmount">Amount</label>
+                        <input class="wide-control" placeholder="Enter amount spent" type="number" id="enteredAmount">
+                    </div><a class="widget uib_w_20 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-theme="b" id="addNewItemToListButton">Add</a>
+
+                    <!-- warning popup -->
+                    <a id="linkDialog" href="#alertBox" data-rel="popup" data-position-to="window" data-transition="pop" style="display:none;"></a>
+                    <div data-role="popup" id="alertBox" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Check!!</h3>
+                        <p></p>
+                        <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- expense list detial page -->
+        <div class="upage" id="expenseListDetail" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_26 font-small" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1 id="expensesHeading">Expense Detail</h1>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_21 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" data-iconpos="notext" id="backToExpenseList">Button</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right" id="totalAmountSpent">
+
+                    </div>
+                </div>
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col left" id="page_66_51">
+                    <div class="widget uib_w_22 ui-content no_wrap outset-margin d-margins" data-uib="jquery_mobile/listview" data-ver="0">
+                        <ul data-role="listview" data-split-icon="delete" data-split-theme="d" id="expenseDetailDiv">
+                            <li class="widget uib_w_23" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#">
+                                    <img src="../../_assets/img/album-bb.jpg" class="ui-li-icon">
+                                    <h2>Broken Bells Broken Bells Broken Bells</h2>
+                                    <p>Date</p>
+                                    <span class="ui-li-count">45</span>
+                                </a>
+                                <a href="#deleteExpense" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                            <li class="widget uib_w_23" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#">
+                                    <img src="/jqm/images/icons-png/alert-white.png" class="ui-li-icon">
+                                    <h2>Broken Bells</h2>
+                                    <p>Date</p>
+                                    <span class="ui-li-count">45</span>
+                                </a>
+                                <a href="#deleteExpenseItem" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                        </ul>
+                        <div data-role="popup" id="deleteExpenseItem" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                            <h3>Delete Expense?</h3>
+                            <p>It will delete the selected expense permanently.</p>
+                            <a id="deleteExpenseDetailItem" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Delete</a>
+                            <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+                        </div>
+                    </div>
+                    <div class="widget uib_w_82 d-margins center_black hide" data-uib="media/text" data-ver="0" id="expenseDetailHintText">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>Your list is empty. Don't worry, add your expenses using the button <strong>"Add Expense"</strong> below.</p>
+                            <p>You can then track when and on which things you have spent by clicking on <strong>"Statistics"</strong> button.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_27" data-uib="jquery_mobile/footer" data-ver="0">
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_28 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-theme="b" id="addItemButton">Add Expense</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"><a class="widget uib_w_29 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="eye" data-theme="b" id="stats">Statistics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- stats page -->
+        <div class="upage" id="statistics" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_32" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Amount spent on</h1>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_38 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" data-iconpos="notext" id="backToExpenseDetailPage">Button</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col left" id="page_80_6">
+                    <div class="widget uib_w_36 ui-content no_wrap d-margins outset-margin" data-uib="jquery_mobile/listview" data-ver="0">
+                        <ul data-role="listview" id="chartList">
+                            <li class="widget uib_w_37 background_10" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span><span class="ui-li-count">678</span>
+                            </li>
+                            <li class="widget uib_w_37" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span><span class="ui-li-count">678</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col left">
+                                <div id="ChartDiv" class="vertical_orientation"></div>
+                                <div id="ChartDivBar" class="vertical_orientation"></div>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+
+                </div>
+                <!-- footer -->
+                <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_33" data-uib="jquery_mobile/footer" data-ver="0">
+
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_34 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="bars" data-theme="b" id="byItemButton">Items</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right">
+                        <a class="widget uib_w_35 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="calendar" data-theme="b" id="byDayButton">Day</a>
+                    </div>
+                </div>
+            </div>
+            <div id="daySubPage" class="upage-content vertical-col left hidden">
+                <div class="widget uib_w_39 ui-content no_wrap outset-margin d-margins" data-uib="jquery_mobile/listview" data-ver="0">
+                    <ul data-role="listview" id="dayChartList">
+                        <li class="widget uib_w_40" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span>
+                        </li>
+                        <li class="widget uib_w_41" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span>
+                        </li>
+                        <li class="widget uib_w_42" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
+                    <div class="col uib_col_3 col-0_12-12" data-uib="layout/col" data-ver="0">
+                        <div class="widget-container content-area vertical-col">
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- group expense list -->
+        <div class="upage" id="groupExpenseList" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_47 font-small" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Group Expenses</h1>
+
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_50" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="home" id="backToHomeFromGroupList">Home</a>
+                    </div>
+                </div>
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col left" id="page_60_90">
+                    <div class="widget uib_w_43 ui-content no_wrap outset-margin d-margins" data-uib="jquery_mobile/listview" data-ver="0">
+
+                        <!-- list view -->
+                        <ul data-role="listview" id="groupExpenseListDiv" data-split-icon="delete" data-split-theme="d" data-filter="true" data-filter-placeholder="Filter Expense List ...">
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#">
+                                    <h2>Broken Bells</h2>
+                                    <span class="ui-li-count">45</span>
+                                </a>
+                                <a href="#deleteGroup" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#"><h2>Broken Bells</h2><span class="ui-li-count">45</span></a>
+                                <a href="#deleteGroup" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                        </ul>
+
+                        <!-- delete popup -->
+                        <div data-role="popup" id="deleteGroup" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                            <h3>Delete List?</h3>
+                            <p>It will delete the expense list permanently.</p>
+                            <a id="deleteGroupExpenseList" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Delete</a>
+                            <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+                        </div>
+
+                    </div>
+                    <div class="widget uib_w_83 d-margins center_black hide" data-uib="media/text" data-ver="0" id="groupExpenseListHintText">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>There are no expense lists. You can create one using the button <strong>"Create New Group Expense"</strong> below.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- footer -->
+                <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_48" data-uib="jquery_mobile/footer" data-ver="0">
+
+                    <div class="widget-container wrapping-col single-centered"><a class="widget uib_w_49 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-theme="b" id="createGroupExpenseListButton">Create New Group Expense</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- create new group expense list -->
+        <div class="upage" id="createGroupExpense" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_53 font-small" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Create New List</h1>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_54" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" id="backToGroupExpenseListButton">Back</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col" id="page_54_7">
+                    <!-- name input -->
+                    <div class="table-thing with-label widget uib_w_51 d-margins label-font-small input-text-small" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-inline" for="groupExpenseListName">Name</label>
+                        <input class="wide-control" type="text" placeholder="Enter List Name" data-mini="true" id="groupExpenseListName">
+                    </div>
+                    <!-- example text -->
+                    <div class="widget uib_w_52 font-small-text-eg" data-uib="media/text" data-ver="0">
+                        <div>
+                            <p>eg: Euro trip expenses, December expenses</p>
+                        </div>
+                    </div>
+                    <!-- select users -->
+                    <div class="table-thing with-label widget uib_w_57 label-font-small" data-uib="jquery_mobile/select" data-ver="0">
+                        <label class="narrow-control label-inline">Members</label>
+                        <div data-role="fieldgroup" class+="" "wide-control"="">
+                            <select id="groupMembers" data-native-menu="false" multiple="multiple" data-mini="true">
+                                <!-- javascript -->
+                            </select>
+                        </div>
+                    </div>
+                    <!-- example text -->
+                    <div class="widget uib_w_61 font-small-text-eg" data-uib="media/text" data-ver="0">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>User not found in the drop down, create new !!</p>
+                        </div>
+                    </div>
+                    <!-- input 1 -->
+                    <div class="table-thing with-label widget uib_w_58 label-font-small input-text-small" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-inline" for="newUser_1">New Member 1</label>
+                        <input class="wide-control" placeholder="Enter user name" type="text" id="newUser_1" data-mini="true">
+                    </div>
+                    <!-- input 2 -->
+                    <div class="table-thing with-label widget uib_w_59 label-font-small input-text-small" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-inline" for="newUser_2">New Member 2</label>
+                        <input class="wide-control" placeholder="Enter user name" type="text" data-mini="true" id="newUser_2">
+                    </div>
+                    <!-- new input text field div -->
+                    <div id="newInputTextFieldDiv">
+                    </div>
+                    <!-- add user button or input field -->
+                    <a class="widget uib_w_60 d-margins button-width-small" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-iconpos="notext" id="addInputTextField"></a>
+                    <!-- warning popup -->
+                    <a id="linkDialogCreateGroup" href="#alertBoxCreateGroup" data-rel="popup" data-position-to="window" data-transition="pop" style="display:none;"></a>
+                    <div data-role="popup" id="alertBoxCreateGroup" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Check!!</h3>
+                        <p></p>
+                        <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">OK</a>
+                    </div>
+                </div>
+
+                <!-- footer -->
+                <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_55" data-uib="jquery_mobile/footer" data-ver="0">
+                    <div class="widget-container wrapping-col single-centered"><a class="widget uib_w_56 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-theme="b" data-icon="plus" id="createNewGroupExpenseList">Create</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- group expense detail -->
+        <div class="upage" id="groupExpenseDetail" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_67 font-small" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1 id="groupExpensesHeading">Expense Detail</h1>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_68 margin-left-5" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" id="backToGroupExpenseList">Back</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right" id="totalGroupAmountSpent">
+
+                    </div>
+                </div>
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col left" id="page_96_61">
+                    <div class="widget uib_w_63 ui-content no_wrap outset-margin d-margins" data-uib="jquery_mobile/listview" data-ver="0">
+                        <!-- list view -->
+                        <ul data-role="listview" id="groupExpenseDetailDiv" data-split-icon="delete" data-split-theme="d">
+                            <!-- summary -->
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0" data-theme="b">
+                                <a href="#">
+                                    <p style="text-align: center"><strong>SUMMARY</strong>
+                                    </p>
+                                    <p><strong>Total Spent: 1234</strong>
+                                    </p>
+                                    <p>By Ankit: 234</p>
+                                    <p>By Ankit: 234</p>
+                                    <p>By Ankit: 234</p>
+                                    <p>By Ankit: 234</p>
+                                    <p>By Ankit: 234</p>
+                                </a>
+                            </li>
+
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#">
+                                    <h2 style="color:#dd8800">Ankit</h2>
+                                    <p>Spent on Food on 13 Dec</p>
+                                    <p>Paid for: Group</p>
+                                    <span class="ui-li-count">45</span>
+                                </a>
+                                <a href="#deleteGroupExpense" style="background-color:#dd8800" data-rel="popup" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                            <li class="widget uib_w_13" data-uib="jquery_mobile/listitem" data-ver="0">
+                                <a href="#">
+                                    <h2 style="color:#338800">Ankit</h2>
+                                    <p>Spent on Food on 13 Dec</p>
+                                    <p>Paid for: Group, Ankit, Ankur, Nagendra, Vivek, Taskeen</p>
+                                    <span class="ui-li-count">45</span>
+                                </a>
+                                <a href="#deleteGroupExpense" data-rel="popup" style="background-color:#338800" data-position-to="window" data-transition="pop">Delete</a>
+                            </li>
+                        </ul>
+
+                        <!-- delete popup -->
+                        <div data-role="popup" id="deleteGroupExpense" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                            <h3>Delete Expense?</h3>
+                            <p>It will delete the expense permanently.</p>
+                            <a id="deleteGroupExpenseButton" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Delete</a>
+                            <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+                        </div>
+                    </div>
+                    <div class="widget uib_w_84 center_black hide" data-uib="media/text" data-ver="0" id="groupExpensesDetailHintText">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>Your list is empty. Don't worry, add your expenses using the button <strong>"Add Expense"</strong> below.</p>
+                            <p>You can then track when and on which things you have spent by clicking on <strong>"Statistics"</strong> button.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_69" data-uib="jquery_mobile/footer" data-ver="0">
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_70 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-theme="b" data-icon="plus" id="goToAddGroupExpensePage">Add Expense</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"><a class="widget uib_w_77 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="bars" data-theme="b" id="groupStats">Statistics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- add group expenses -->
+        <div class="upage" id="addGroupExpensesPage" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_72 font-small" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Add New Expense</h1>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_73 margin-left-5" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="carat-l" id="backToGroupExpenseDetail">Back</a>
+                    </div>
+                </div>
+
+                <!--  main content -->
+                <div class="upage-content content-area vertical-col left" id="page_71_26">
+                    <!-- paid by -->
+                    <div class="table-thing with-label widget uib_w_71 d-margins label-font-small" data-uib="jquery_mobile/select" data-ver="0">
+                        <label class="narrow-control label-inline">Paid By</label>
+                        <div data-role="fieldgroup" class+="" "wide-control"="">
+                            <select data-mini="true" id="paidBySelect">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- amount -->
+                    <div class="table-thing with-label widget uib_w_74 label-font-small input-text-small" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-inline" for="groupAmountInput">Amount</label>
+                        <input class="wide-control" placeholder="Enter amount spent" type="text" data-mini="true" id="groupAmountInput">
+                    </div>
+                    <!-- paid for -->
+                    <div class="table-thing with-label widget uib_w_75 label-font-small" data-uib="jquery_mobile/select" data-ver="0">
+                        <label class="narrow-control label-inline">Paid For</label>
+                        <div data-role="fieldgroup" class+="" "wide-control"="">
+                            <select data-mini="true" id="paidForSelect" data-native-menu="false" multiple="multiple">
+                                <option>Select</option>
+                                <option>Group</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- category -->
+                    <div class="table-thing with-label widget uib_w_78 label-font-small" data-uib="jquery_mobile/select" data-ver="0">
+                        <label class="narrow-control label-inline">Category</label>
+                        <div data-role="fieldgroup" class+="" "wide-control"="">
+                            <select data-mini="true" id="categoryInput">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- add button -->
+                    <a class="widget uib_w_76 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="plus" data-theme="b" id="addGroupExpenseButton">Add</a>
+                    <!-- warning popup -->
+                    <a id="linkDialogGroup" href="#alertBoxGroup" data-rel="popup" data-position-to="window" data-transition="pop" style="display:none;"></a>
+                    <div data-role="popup" id="alertBoxGroup" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Check!!</h3>
+                        <p></p>
+                        <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- group statistics page -->
+        <div class="upage" id="groupStatisticsPage" data-role="page">
+            <div class="upage-outer">
+                <!-- header -->
+                <div data-role="header" class="container-group inner-element uib_w_89" data-uib="jquery_mobile/header" data-ver="0" data-position="fixed">
+                    <h1>Statistics</h1>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"><a class="widget uib_w_91" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-mini="true" data-icon="carat-l" id="backToGroupExpenseDetailFromStats">Back</a>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+                <!-- main content -->
+                <div class="upage-content content-area vertical-col left" id="page_55_76">
+                    <div class="widget uib_w_85 ui-content no_wrap outset-margin d-margins" data-uib="jquery_mobile/listview" data-ver="0" id="groupStatsList">
+                        <ul data-role="listview" id="groupStatsListUl">
+                            <li class="widget uib_w_86" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span>
+                            </li>
+                            <li class="widget uib_w_87" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span>
+                            </li>
+                            <li class="widget uib_w_88" data-uib="jquery_mobile/listitem" data-ver="0"><span>Listitem</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
