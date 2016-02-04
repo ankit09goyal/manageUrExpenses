@@ -12,3 +12,5 @@ Future extensions: <br/>
 
 1) Allow user to register, find their registered freinds and add them in the group expense list. <br/>
 2) Centralised group expense list is maintained and each user can update that list. Changes will be shown to every memeber in that list. <br/>
+
+Its a small application, I developed to learn Corodova. It was fun.. :) 
